@@ -134,16 +134,16 @@ public class RentalManageDto {
         ZonedDateTime zonedDateTime = instant.atZone(ZoneId.systemDefault()); // タイムゾーンを指定してZonedDateTimeに変換
         LocalDate expectedDate = zonedDateTime.toLocalDate(); // LocalDateに変換
 
-      //変更後のステータスが貸出中だけど現在の日付ではない場合
-      if (this.status == RentalStatus.RENTAlING.getValue() && !today.equals(expectedDate)) {
+        //変更後のステータスが貸出中だけど現在の日付ではない場合
+        if (this.status == RentalStatus.RENTAlING.getValue() && !today.equals(expectedDate)) {
 
-      //「現在の日付で入力してください」という旨のエラー
-      return Optional.of("現在の日付で入力してください");
-      }
+            //「現在の日付で入力してください」という旨のエラー
+            return Optional.of("現在の日付で入力してください");
+        }
 
-      // 上記の条件に該当しない場合は、デフォルトの空の Optional を返す
-      //つまり、エラーがない場合
-      return Optional.empty();
+        // 上記の条件に該当しない場合は、デフォルトの空の Optional を返す
+        //つまり、エラーがない場合
+        return Optional.empty();
     }
 
 
