@@ -57,17 +57,16 @@
                                         <div th:text="${'貸出開始日：' + #dates.format(rentalManage.rentaledAt, ('yyyy/MM/dd'))}"></div>
                                     </th:block>
                                 </th:block>
-                                <th:block th:switch="${rentalManage.canceledAt == null}">
+                                <th:block th:switch="${rentalManage.returnedAt == null}">
                                      <th:block th:case="true">
                                         <div th:text="${'返却予定日：' + #dates.format(rentalManage.expectedReturnOn, ('yyyy/MM/dd'))}"></div>
                                     </th:block>
-                                <th:block th:if="${rentalManage.status == rentalManage.getStatus()}">
-                                    <th:block th:case="true">
-                                        <div th:text="${'返却日：' + #dates.format(rentalManage.returnedAt, 'yyyy/MM/dd')}"></div>
-                                    </th:block>
                                     <th:block th:case=*>
-                                        <div th:text="${'キャンセル日：' + #dates.format(rentalManage.canceledAt, ('yyyy/MM/dd'))}"></div>
+                                        <div th:text="${'返却日：' + #dates.format(rentalManage.returnedAt, ('yyyy/MM/dd'))}"></div>
                                     </th:block>
+                                </th:block>
+                                <th:block th:if="${rentalManage.status == 3}">
+                                    <div th:text="${'キャンセル日：' + #dates.format(rentalManage.canceledAt, ('yyyy/MM/dd'))}"></div>
                                 </th:block>
                             </td>
                         </tr>
